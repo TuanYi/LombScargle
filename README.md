@@ -8,7 +8,7 @@ Currently supported surveys: Catalina, ASAS-SN, ZTF, and NEOWISE.
 
 Please feel free to use, modify, and distribute this toolbox.
 
-Any suggestions to improve the code or bug reports are most welcome!
+Any suggestions to improve the code or bug reports are most welcomed!
 
 
 
