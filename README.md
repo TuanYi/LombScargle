@@ -24,7 +24,7 @@ Discriptions:
 
 [kernel]：modules for data import, LombScargle, and other useful tools.  
 
-[look.nb]: notebook that demonstrate how to use the tools to find the periodicity of a given lightcurve.
+[look.nb]: notebook that demonstrates how to use the tools to find the periodicity of a given light curve.
 
 [results]: you can export any results you want in this folder 
 
