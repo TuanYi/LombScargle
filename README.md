@@ -1,4 +1,7 @@
 # LombScargle
+
+Intro: 
+
 This is a toolbox written in Mathematica, providing basic tools to analyse light curve data from surveys.
 
 Currently supported surveys: Catalina, ASAS-SN, ZTF, and NEOWISE.
@@ -6,6 +9,15 @@ Currently supported surveys: Catalina, ASAS-SN, ZTF, and NEOWISE.
 Please feel free to use, modify, and distribute this toolbox.
 
 Any suggestions to improve the code or bug reports are most welcome!
+
+
+Installation:
+
+In order to run the toolbox, you should have Walfram's Mathematica (version 10 or higher) installed in your computer.
+
+Then you can simply download the repository and put it anywhere on your computer, open the nootbook, and run it.  
+
+
 
 Discriptions:
 
