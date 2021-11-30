@@ -25,10 +25,16 @@ Step1: A lightcurve was downloaded from the Catalina Real-Time Transient Surveys
 ![lightcurve](https://user-images.githubusercontent.com/81213494/144019936-013bd759-f42a-486c-90b4-3c5c74011d00.jpg)
 
 Step2: Use the toolbox to import the data, find the period of this source by using the generalized Lomb-Scargle algorithm
-(VanderPlas 2018: https://ui.adsabs.harvard.edu/abs/1982ApJ...263..835S/abstract
+
+Please refer to the following paper for details of the Lomb-Scargle algorithm:
+
+VanderPlas 2018: https://ui.adsabs.harvard.edu/abs/1982ApJ...263..835S/abstract
+
 Zechmeister & Kürster 2009: https://ui.adsabs.harvard.edu/abs/2009A%26A...496..577Z/abstract
+
 Scargle 1982: https://ui.adsabs.harvard.edu/abs/1982ApJ...263..835S/abstract
-Lomb 1976: https://ui.adsabs.harvard.edu/abs/1976Ap%26SS..39..447L/abstract):
+
+Lomb 1976: https://ui.adsabs.harvard.edu/abs/1976Ap%26SS..39..447L/abstract:
 
 (a) the lombscargle power:
 ![lombscargle_power](https://user-images.githubusercontent.com/81213494/144019954-f9f0487c-49be-4957-914c-d2cc0d3b21bf.jpg)
