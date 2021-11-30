@@ -1,0 +1,283 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10872,        275]
+NotebookOptionsPosition[      9632,        246]
+NotebookOutlinePosition[     10062,        263]
+CellTagsIndexPosition[     10019,        260]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Fold", "Section",
+ CellChangeTimes->{{3.8227825435328007`*^9, 3.8227825444285297`*^9}, 
+   3.827848412903209*^9},ExpressionUUID->"a8367db5-96af-4680-9069-\
+0af1499bffc4"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Clear", "[", "foldcat", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"foldcat", "::", "usage"}], "=", 
+     "\"\<This function takes in a list of photometric data, the desired \
+period of folding, and a reference epoch that can be defined by the user, to \
+fold the light curve.\nInputs:\n(1) data: the photometric data to be folded. \
+Should be a matrix. \n    First Column should be observation time at the mid \
+of observation in MJD, HJD, BJD, or TJD etc.\n    Second column should be the \
+magnitude or flux at the corresponding exposure time with respect to first \
+column;\n    Third column is optional. For example, you would like to take \
+the error bars of the corresponding mag with respect to second column;\n(2) \
+period: should be in unit of days;\n(3) epoch: a reference epoch that can be \
+defined by the user, for example, you would like to choose the MJD at the \
+photometric minimum as reference point, such that the final folded light \
+curve has a minimum right at the phase 0. This one the optional, the default \
+is 0.\n\nThe formula used to fold data is\n\[Phi]=frac(\!\(\((Time - \
+Time0)\)/period\));\nwhere \[Phi] is the result phase (after foldding );\n\
+Time is the MJD or HJD or BJD of an observation;\nTime0 is a reference time \
+point\nperiod is the period;\nfrac means taking the fractional part of a \
+number.\n\nNote: \nIn practice, if your Time <Time0, the result phase \[Phi] \
+will become negative,\nso I always plus 1 to the result, and taking \
+fractional part again, to make sure the result is positive\>\""}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"foldcat", "[", 
+     RowBox[{"data_", ",", "period_", ",", 
+      RowBox[{"epoch_", ":", "0"}]}], "]"}], ":=", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"FractionalPart", "[", 
+         RowBox[{"1", "+", 
+          RowBox[{"FractionalPart", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"data", "\[LeftDoubleBracket]", 
+               RowBox[{"All", ",", "1"}], "\[RightDoubleBracket]"}], "-", 
+              "epoch"}], ")"}], "/", "period"}], "]"}]}], "]"}], "}"}], ",", 
+       RowBox[{"Transpose", "@", 
+        RowBox[{"data", "\[LeftDoubleBracket]", 
+         RowBox[{"All", ",", 
+          RowBox[{"2", ";;"}]}], "\[RightDoubleBracket]"}]}]}], "]"}], 
+     "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.8227819743798923`*^9, 3.822782531053854*^9}, 
+   3.822782788602855*^9, {3.8227830516288147`*^9, 3.8227832271541476`*^9}, {
+   3.8227832843632755`*^9, 3.8227833864728756`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"b7d854d6-59b5-4022-a36b-3e93842f9c32"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.822782910317664*^9},
+ CellLabel->"In[4]:=",ExpressionUUID->"9401d06e-0d1f-409f-a1ce-7593d63ec927"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Copy", "Section",
+ CellChangeTimes->{{3.841373405498482*^9, 
+  3.841373409148282*^9}},ExpressionUUID->"a102bab6-1992-4fa7-89e3-\
+6cd8103722a0"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "copy2", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"copy2", "[", "data_", "]"}], ":=", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"copy", "=", "data"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{
+     "make", " ", "a", " ", "copy", " ", "of", " ", "the", " ", "original", 
+      " ", "data"}], "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"VectorQ", "@", "copy"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"copy", "=", 
+        RowBox[{
+         RowBox[{"Sign", "[", 
+          RowBox[{"0.5", "-", "data"}], "]"}], "+", "data"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"copy", "\[LeftDoubleBracket]", 
+         RowBox[{"All", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+        RowBox[{
+         RowBox[{"Sign", "[", 
+          RowBox[{"0.5", "-", 
+           RowBox[{"data", "\[LeftDoubleBracket]", 
+            RowBox[{"All", ",", "1"}], "\[RightDoubleBracket]"}]}], "]"}], 
+         "+", 
+         RowBox[{"data", "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "1"}], "\[RightDoubleBracket]"}]}]}]}], "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{"swing", " ", "the", " ", "clock"}], "*)"}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", 
+      RowBox[{"DeleteDuplicates", "@", 
+       RowBox[{"Join", "[", 
+        RowBox[{"data", ",", "copy"}], "]"}]}], "]"}]}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"return", " ", "the", " ", "extended", " ", "data"}], "*)"}], 
+   "]"}]}]}], "Input",
+ CellLabel->"In[5]:=",ExpressionUUID->"32196ad2-7b3f-4ad6-b0f6-aef0ee4079c1"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "fc", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", "fc", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<NumCol\>\"", "\[Rule]", "1"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fc", "[", 
+   RowBox[{"table_", ",", "meta_", ",", 
+    RowBox[{"OptionsPattern", "[", "]"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{
+     RowBox[{"table", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+     ",", "meta"}], "]"}], "\[LeftDoubleBracket]", 
+   RowBox[{
+    RowBox[{"OptionValue", "[", "\"\<NumCol\>\"", "]"}], ",", "1"}], 
+   "\[RightDoubleBracket]"}]}]}], "Input",
+ CellLabel->"In[7]:=",ExpressionUUID->"f9f87f69-3bd4-4c7f-a7dd-2f1d427c0f50"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Bin", "Section",
+ CellChangeTimes->{
+  3.827848419578477*^9},ExpressionUUID->"0b1cebf0-f922-4bbd-bcbf-\
+485fb6faf7dd"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "binner0", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"binner0", "::", "usage"}], "=", 
+   "\"\<Bin the data into n equal width bins, the mean in each bin are \
+extracted\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"binner0", "[", 
+   RowBox[{"dat_", ",", "binsize_"}], "]"}], ":=", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"inn", ",", "bin", ",", "out"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"inn", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+           "#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+           RowBox[{"Around", "[", 
+            RowBox[{
+             RowBox[{
+             "#", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], ",", 
+             RowBox[{
+             "#", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}], 
+            "]"}]}], "}"}], "&"}], ",", "dat"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"bin", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{"Mean", ",", 
+        RowBox[{"GatherBy", "[", 
+         RowBox[{"inn", ",", 
+          RowBox[{
+           RowBox[{"Floor", "[", 
+            RowBox[{
+             RowBox[{
+             "#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",",
+              "binsize"}], "]"}], "&"}]}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"out", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+           "#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+           RowBox[{
+            RowBox[{
+            "#", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], "[", 
+            "\"\<Value\>\"", "]"}], ",", 
+           RowBox[{
+            RowBox[{
+            "#", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], "[", 
+            "\"\<Uncertainty\>\"", "]"}]}], "}"}], "&"}], ",", "bin"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "out", "]"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.834117617855427*^9, 3.8341176534431334`*^9}, {
+  3.8341177278372507`*^9, 3.834117730393023*^9}, {3.8341177666042356`*^9, 
+  3.8341178472497206`*^9}, {3.834117986058033*^9, 3.834118013262699*^9}, {
+  3.834118091532925*^9, 3.8341181577526054`*^9}, {3.8341181911092005`*^9, 
+  3.834118214604977*^9}, {3.8341182700752897`*^9, 3.8341182967274075`*^9}, {
+  3.834118559666333*^9, 3.8341185611487837`*^9}, {3.840444207597151*^9, 
+  3.840444212242607*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"cfa2f0b2-c54c-4c44-ad64-da2008468203"],
+
+Cell[BoxData[
+ RowBox[{"NotebookSave", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.8341178536207094`*^9, 3.8341178561112185`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"d9852b42-25fe-4c49-beb4-425a818a6b0b"]
+}, Open  ]]
+},
+WindowSize->{1117, 655},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>2. Inherited,
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8a89eabe-115d-4f45-b3ff-4e9a7f790e73"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 176, 3, 133, "Section",ExpressionUUID->"a8367db5-96af-4680-9069-0af1499bffc4"],
+Cell[759, 27, 2832, 52, 1835, "Input",ExpressionUUID->"b7d854d6-59b5-4022-a36b-3e93842f9c32"],
+Cell[3594, 81, 165, 2, 120, "Input",ExpressionUUID->"9401d06e-0d1f-409f-a1ce-7593d63ec927"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3796, 88, 149, 3, 133, "Section",ExpressionUUID->"a102bab6-1992-4fa7-89e3-6cd8103722a0"],
+Cell[3948, 93, 1777, 44, 463, "Input",ExpressionUUID->"32196ad2-7b3f-4ad6-b0f6-aef0ee4079c1"],
+Cell[5728, 139, 767, 20, 171, "Input",ExpressionUUID->"f9f87f69-3bd4-4c7f-a7dd-2f1d427c0f50"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6532, 164, 124, 3, 133, "Section",ExpressionUUID->"0b1cebf0-f922-4bbd-bcbf-485fb6faf7dd"],
+Cell[6659, 169, 2745, 69, 362, "Input",ExpressionUUID->"cfa2f0b2-c54c-4c44-ad64-da2008468203"],
+Cell[9407, 240, 209, 3, 56, "Input",ExpressionUUID->"d9852b42-25fe-4c49-beb4-425a818a6b0b"]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,154 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5185,        146]
+NotebookOptionsPosition[      4430,        127]
+NotebookOutlinePosition[      4861,        144]
+CellTagsIndexPosition[      4818,        141]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8403977904971085`*^9, 3.8403977944813385`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"04366993-e96b-4ff2-9510-cef3f3de681d"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"mag2amp", ",", "amp2mag"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"mag2amp", "[", 
+    RowBox[{"m_", ",", "m0_"}], "]"}], ":=", 
+   SuperscriptBox["10", 
+    RowBox[{
+     RowBox[{"-", "0.4"}], "\[Times]", 
+     RowBox[{"(", 
+      RowBox[{"m", "-", "m0"}], ")"}]}]]}], 
+  RowBox[{"(*", 
+   RowBox[{"-", "1"}], "*)"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"amp2mag", "[", 
+   RowBox[{"a_", ",", "m0_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "2.5"}], "\[Times]", 
+    RowBox[{"Log10", "[", 
+     RowBox[{"a", "+", "1"}], "]"}]}], "+", "m0"}]}]}], "Input",
+ CellChangeTimes->{{3.8403977956155252`*^9, 3.8403978065329123`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"4be23928-7ab7-4343-8fca-b3333aa0fc3a"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "fmag2flux", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fmag2flux", "::", "usage"}], "=", 
+   "\"\<transform magnitude to relative flux (w.r.t. mean)\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fmag2flux", "[", "data_", "]"}], ":=", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "time", ",", "mag", ",", "magerr", ",", "mean", ",", "flux0", ",", 
+      "flux", ",", "fluxerr"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"time", ",", "mag", ",", "magerr"}], "}"}], "=", 
+      RowBox[{"Transpose", "@", "data"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"mean", "=", 
+      RowBox[{"Mean", "@", "mag"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Echo", "@", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Median", "[", "mag", "]"}], "-", 
+        RowBox[{"Mean", "[", "mag", "]"}]}], ")"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"flux0", "=", 
+      RowBox[{"MapThread", "[", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["10", 
+          RowBox[{
+           RowBox[{"-", "0.4"}], "\[Times]", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Around", "[", 
+              RowBox[{"#1", ",", "#2"}], "]"}], "-", "mean"}], ")"}]}]], 
+         "&"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"mag", ",", "magerr"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"flux", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", "\"\<Value\>\"", "]"}], "&"}], ",", "flux0"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"fluxerr", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", "\"\<Uncertainty\>\"", "]"}], "&"}], ",", 
+        "flux0"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Transpose", "@", 
+         RowBox[{"{", 
+          RowBox[{"time", ",", "flux", ",", "fluxerr"}], "}"}]}], ",", 
+        "mean"}], "}"}], "]"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.8403986698996*^9, 3.8403986974227886`*^9}, {
+  3.8403988405334954`*^9, 3.8403988492489557`*^9}, {3.8404004150416946`*^9, 
+  3.8404004155574102`*^9}, {3.840400527434898*^9, 3.8404005577959404`*^9}, {
+  3.840403552288376*^9, 3.840403581047821*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"84a050cb-a4b3-4fb7-a0d3-9e0ab825c7a3"],
+
+Cell[BoxData[
+ RowBox[{"NotebookSave", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.8375558090110965`*^9, 3.837555812215437*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"7763d817-6ad5-48d3-8fdb-0eeba8ff33f4"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8403983902316875`*^9, 3.8403985201929502`*^9}, 
+   3.8403988311174574`*^9},ExpressionUUID->"d2d90760-d96a-481f-9dd4-\
+b88d8a6e5fdf"]
+},
+WindowSize->{1117, 679},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"551f157a-e08e-4b98-b3b1-2404d70532d8"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 174, 2, 42, "Input",ExpressionUUID->"04366993-e96b-4ff2-9510-cef3f3de681d"],
+Cell[735, 24, 808, 23, 101, "Input",ExpressionUUID->"4be23928-7ab7-4343-8fca-b3333aa0fc3a"],
+Cell[1546, 49, 2487, 66, 315, "Input",ExpressionUUID->"84a050cb-a4b3-4fb7-a0d3-9e0ab825c7a3"],
+Cell[4036, 117, 206, 3, 42, "Input",ExpressionUUID->"7763d817-6ad5-48d3-8fdb-0eeba8ff33f4"],
+Cell[4245, 122, 181, 3, 42, "Input",ExpressionUUID->"d2d90760-d96a-481f-9dd4-b88d8a6e5fdf"]
+}
+]
+*)
+
