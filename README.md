@@ -13,8 +13,8 @@ Many thanks!
 
 Installation:
 
-In order to run the toolbox, you should have Walfram's Mathematica (version 10 or higher) installed in your computer.
-Then you can simply download the repository and put it anywhere on your computer, open the nootbook, and run it.  
+In order to run the toolbox, you should have Walfram's Mathematica (version 10 or higher) installed on your computer.
+You can then download the repository and put it anywhere on your computer, open the notebook, and run it.  
 
 
 
