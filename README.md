@@ -3,19 +3,17 @@
 Introduction: 
 
 This is a toolbox written in Mathematica, providing basic tools to analyse light curve data from surveys.
-
 Currently supported surveys: Catalina, ASAS-SN, ZTF, and NEOWISE.
 
 Please feel free to use, modify, and distribute this toolbox.
-
 Any suggestions to improve the code or bug reports are most welcomed!
+If your research work benefits from this toolbox, please cite the web page of this repository. Many thanks!
 
 
 
 Installation:
 
 In order to run the toolbox, you should have Walfram's Mathematica (version 10 or higher) installed in your computer.
-
 Then you can simply download the repository and put it anywhere on your computer, open the nootbook, and run it.  
 
 
@@ -38,8 +36,7 @@ Step1: A lightcurve was downloaded from the Catalina Real-Time Transient Surveys
 
 ![lightcurve](https://user-images.githubusercontent.com/81213494/144019936-013bd759-f42a-486c-90b4-3c5c74011d00.jpg)
 
-Step2: Use the toolbox to import the data, find the period of this source by using the generalized Lomb-Scargle algorithm
-
+Step2: Use the toolbox to import the data, find the period of this source by using the generalized Lomb-Scargle algorithm. 
 Please refer to the following paper for details of the Lomb-Scargle algorithm:
 
 VanderPlas 2018: https://ui.adsabs.harvard.edu/abs/1982ApJ...263..835S/abstract
