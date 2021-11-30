@@ -4,7 +4,6 @@ Introduction:
 
 This is a toolbox written in Mathematica, providing basic tools to analyse light curve data from surveys.
 Currently supported surveys: Catalina, ASAS-SN, ZTF, and NEOWISE.
-
 Please feel free to use, modify, and distribute this toolbox.
 Any suggestions to improve the code or bug reports are most welcomed!
 If your research work benefits from this toolbox, please cite the web page of this repository. Many thanks!
