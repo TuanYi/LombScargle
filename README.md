@@ -1,6 +1,6 @@
 # LombScargle
 
-Intro: 
+Introduction: 
 
 This is a toolbox written in Mathematica, providing basic tools to analyse light curve data from surveys.
 
@@ -9,6 +9,7 @@ Currently supported surveys: Catalina, ASAS-SN, ZTF, and NEOWISE.
 Please feel free to use, modify, and distribute this toolbox.
 
 Any suggestions to improve the code or bug reports are most welcome!
+
 
 
 Installation:
@@ -28,6 +29,7 @@ Discriptions:
 [look.nb]: notebook that demonstrate how to use the tools to find the periodicity of a given lightcurve.
 
 [results]: you can export any results you want in this folder 
+
 
 
 Example:
