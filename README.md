@@ -1,6 +1,6 @@
 # LombScargle
 
-Introduction: 
+## Introduction: 
 --------------------
 
 This is a toolbox written in Mathematica, providing basic tools to analyse light curve data from surveys.
@@ -12,15 +12,15 @@ Many thanks!
 
 
 
-Installation:
+## Installation:
 --------------------
 
-In order to run the toolbox, you should have Walfram's Mathematica (version 10 or higher) installed on your computer.
+In order to run the toolbox, you should have Wolfram's Mathematica (version 10 or higher) installed on your computer.
 You can then download the repository and put it anywhere on your computer, open the notebook, and run it.  
 
 
 
-Discriptions:
+## Descriptions:
 --------------------
 
 [data]: folder to contain the light curve files. You should put the raw light curve data file in this folder.
@@ -33,14 +33,14 @@ Discriptions:
 
 
 
-Example:
+## Example:
 --------------------
 
 Step1: A lightcurve was downloaded from the Catalina Real-Time Transient Surveys:
 
 ![lightcurve](https://user-images.githubusercontent.com/81213494/144019936-013bd759-f42a-486c-90b4-3c5c74011d00.jpg)
 
-Step2: Use the toolbox to import the data, find the period of this source by using the generalized Lomb-Scargle algorithm. 
+Step2: Use the toolbox to import the data, find the period of this source by using the generalised Lomb-Scargle algorithm. 
 Please refer to the following paper for details of the Lomb-Scargle algorithm:
 
 VanderPlas 2018: https://ui.adsabs.harvard.edu/abs/1982ApJ...263..835S/abstract
@@ -56,3 +56,10 @@ Lomb 1976: https://ui.adsabs.harvard.edu/abs/1976Ap%26SS..39..447L/abstract:
 
 (b) the phasefolded light curve:
 ![phased_lightcurve](https://user-images.githubusercontent.com/81213494/144019964-e5962796-1407-40ce-96ae-c1cfe084f91d.jpg)
+
+## Maintainance:
+--------------------
+
+yit@xmu.edu.cn
+
+The code is used in my recent paper: ![a dynamically discovered and characterized non-accreting neutron star - M dwarf binary candidate](https://www.nature.com/articles/s41550-022-01766-0) 
