@@ -64,3 +64,8 @@ yit@xmu.edu.cn
 
 The code is used in my recent paper: [A dynamically discovered and characterized non-accreting neutron star - M dwarf binary candidate]
 (https://www.nature.com/articles/s41550-022-01766-0) 
+
+If your research work benefits from this toolbox, please cite the web page of this repository: https://github.com/TuanYi/LombScargle. 
+Many thanks!
+
+
